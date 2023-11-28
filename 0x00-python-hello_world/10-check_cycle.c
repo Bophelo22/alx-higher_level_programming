@@ -11,7 +11,11 @@ listint_t *slowList, *fastList;
 slowList = list;
 fastList = list;
 
-if (list)
+if (!list)
+{
+return (0);
+}
+else
 {
 slowList = slowList->next;
 fastList = fastList->next->next;
@@ -19,10 +23,6 @@ if (slowList == fastList)
 {
 return (1);
 }
-return (0);
-}
-else
-{
 return (0);
 }
 }
