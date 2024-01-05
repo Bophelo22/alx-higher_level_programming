@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
-Write a class Rectangle that defines a rectangle by: (based on 1-rectangle.py)
+Write a class Rectangle that defines a rectangle by: (based on 3-rectangle.py)
 """
 
 
 class Rectangle:
     """
-    A class Rectanle that defines a rectangle
+    A class Rectangle that defines a rectangle
     """
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """
@@ -15,6 +16,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -30,10 +32,9 @@ class Rectangle:
         """
         if not isinstance(value, int):
             TypeError('width must be an integer')
-        elif value < 0:
+        if value < 0:
             raise ValueError('width must be >= 0')
-        else:
-            self.__width = value
+        self.__width = value
 
     @property
     def height(self):
@@ -68,3 +69,25 @@ class Rectangle:
             return 0
         else:
             return (self.width + self.height) * 2
+
+    def __str__(self):
+        """
+        String rep
+        """
+        string = ""
+        for i in range(self.height):
+            string += '#' * self.width + '\n'
+        return string[:-1]
+
+    def __repr__(self):
+        """
+        Rep
+        """
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """
+        Delete
+        """
+        print('Bye rectangle...')
+        Rectangle.number_of_instances -= 1

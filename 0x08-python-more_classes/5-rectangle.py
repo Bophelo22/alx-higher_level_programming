@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Write a class Rectangle that defines a rectangle by: (based on 1-rectangle.py)
+Write a class Rectangle that defines a rectangle by: (based on 3-rectangle.py)
 """
 
 
 class Rectangle:
     """
-    A class Rectanle that defines a rectangle
+    A class Rectangle that defines a rectangle
     """
 
     def __init__(self, width=0, height=0):
@@ -68,3 +68,24 @@ class Rectangle:
             return 0
         else:
             return (self.width + self.height) * 2
+
+    def __str__(self):
+        """
+        String representation
+        """
+        string = ""
+        for i in range(self.height):
+            string += '#' * self.width + '\n'
+        return string[:-1]
+
+    def __repr__(self):
+        """
+        Representation
+        """
+        return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """
+        Delete
+        """
+        print('Bye rectangle...')
