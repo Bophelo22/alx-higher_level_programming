@@ -2,6 +2,7 @@
 """
 Write a class Rectangle that defines a rectangle by: (based on 0-rectangle.py)
 """
+
 class Rectangle:
     """
     A class Square that defines a square
