@@ -2,8 +2,6 @@
 """
 class Student that defines a student
 """
-
-
 class Student():
     """
     Public Attributes:
