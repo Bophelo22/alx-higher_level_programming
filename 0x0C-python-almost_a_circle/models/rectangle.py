@@ -74,43 +74,52 @@ class Rectangle(Base):
     
     def area(self):
         """function that determines the area"""
-        area = self.__width * self.__height
-        return (area)
+        return (self.width * self.height)
+        
     
     def display(self):
         """public method that prints in stdout the
         Rectangle instance with the character"""
-        print_symb = "#"
-        rect = ""
-        
-        for i in range(self.height):
-            rect += (" " * self.x) + (print_symb*self.width) + "\n"
-        print(rect, end="")
+        for col in range(self.y):
+            print()
+        for y in range(self.height):
+            for x in range(self.x):
+                print(' ', end='')
+            for row in range(self.width):
+                print('#', end='')
+            print()
             
     def __str__(self):
         """overriding the __str__ method"""
-        return f"[{type(self).__name__}] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
-    
-    def display(self):
-        """public method to print in stdout the Rectangle instance with the character"""
+        return ('[Rectangle] ({}) {}/{} - {}/{}'.format(
+            self.id, self.x, self.y, self.width, self.height))
         
     def update(self, *args, **kwargs):
         """function that assigns a key/value argument to attributes"""
-        if len(args) == 0:
-            for key, val in kwargs.items():
-                self.__setattr__(key, val)
-            return
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
+        argument_counter = len(args)
+        if argument_counter > 0:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            except:
+                pass
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'width' in kwargs:
+                self.width = kwargs['width']
+            if 'height' in kwargs:
+                self.height = kwargs['height']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']
     
     def to_dictionary(self):
         """public method that returns the dictionary representation of a Rectangle"""
         
-        return {'x': getattr(self, "x"), 'y': getattr(self, "y"),'id': getattr(self, "id"),
-               'height': getattr(self, "height"), 'width': getattr(self, "width")}
+        return {'x': self.x, 'y': self.y,'id': self.id,
+               'height': self.height, 'width': self.width}
