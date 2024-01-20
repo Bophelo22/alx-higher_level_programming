@@ -18,9 +18,9 @@ class Square(Rectangle):
     def size(self, val):
         """public setter for size"""
         if type(val) != int:
-            raise TypeError("width must be an integer")
-        elif val <= 0:
-            raise ValueError("width must be > 0")
+            raise TypeError("size must be an integer")
+        elif val < 0:
+            raise ValueError("size must be > 0")
         else:
             self.width = val
             self.height = val
@@ -54,6 +54,5 @@ class Square(Rectangle):
         
     def to_dictionary(self):
         """public method that returns the dictionary representation of a Square"""
-        
         return {'id': self.id, 'x': self.x, 
                 'size': self.size,'y': self.y}

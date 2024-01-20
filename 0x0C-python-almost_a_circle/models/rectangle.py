@@ -2,8 +2,9 @@
 """Class Rectangle inherits from Base"""
 from models.base import Base
 class Rectangle(Base):
-    """Private instance attributes, each with its own public getter and setter"""
+    """Rectangle inherits rfom class base"""
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Private instance attributes, each with its own public getter and setter"""
         super.__init__(id)
         self.width = width
         self.height = height
@@ -19,9 +20,9 @@ class Rectangle(Base):
     def width(self, val):
         """public setter for width"""
         if type(val) != int:
-            return TypeError("width must be an int")
+            return TypeError('width must be an int')
         elif val < 0:
-            return TypeError("width must be > 0")
+            return TypeError('width must be > 0')
         else:
             self.__width = val
     
@@ -35,9 +36,9 @@ class Rectangle(Base):
         """public setter for height"""
         
         if val != int:
-            return TypeError("height must be an int")
+            return TypeError('height must be an int')
         elif val < 0:
-            return TypeError("height must be > 0")
+            return TypeError('height must be > 0')
         else: 
             self.__height = val
     
@@ -50,9 +51,9 @@ class Rectangle(Base):
     def x(self,val):
         """publis setter for x"""
         if val != int:
-           return TypeError("x must be an int")
+           return TypeError('x must be an int')
         elif val < 0: 
-            return TypeError("x must be >= 0")
+            return TypeError('x must be >= 0')
         else:
             self.__x = val
     
@@ -65,27 +66,27 @@ class Rectangle(Base):
     def y(self,val):
         """publis setter for y"""
         if val != int:
-           return TypeError("y must be an int")
+           return TypeError('y must be an int')
         elif val < 0: 
-            return TypeError("y must must be >= 0")
+            return TypeError('y must must be >= 0')
         else:
             self.__y = val
             
     
     def area(self):
         """function that determines the area"""
-        return (self.width * self.height)
+        return self.width * self.height
         
     
     def display(self):
         """public method that prints in stdout the
         Rectangle instance with the character"""
-        for col in range(self.y):
+        for i in range(self.y):
             print()
-        for y in range(self.height):
+        for j in range(self.height):
             for x in range(self.x):
                 print(' ', end='')
-            for row in range(self.width):
+            for k in range(self.width):
                 print('#', end='')
             print()
             
@@ -120,6 +121,5 @@ class Rectangle(Base):
     
     def to_dictionary(self):
         """public method that returns the dictionary representation of a Rectangle"""
-        
         return {'x': self.x, 'y': self.y,'id': self.id,
                'height': self.height, 'width': self.width}
